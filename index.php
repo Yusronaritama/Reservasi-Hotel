@@ -1,3 +1,8 @@
+<?php
+// Memulai sesi untuk memeriksa status login
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -145,9 +150,14 @@
                 <a href="#facilities">Fasilitas</a>
                 <a href="#reviews">Ulasan</a>
                 <a href="#contact">Kontak</a>
-                <a href="login.php" class="btn-nav">Login</a>
-                <a href="register.php" class="btn-nav">Registrasi</a>
-                <a href="reservasi.php" class="btn-nav">Reservasi</a>
+
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="reservasi.php" class="btn-nav">Reservasi</a>
+                    <a href="logout.php" class="btn-nav">Logout</a>
+                <?php else: ?>
+                    <a href="login.php" class="btn-nav">Login</a>
+                    <a href="register.php" class="btn-nav">Registrasi</a>
+                <?php endif; ?>
             </nav>
         </div>
     </header>
@@ -163,7 +173,7 @@
         <h2>Fasilitas Kami</h2>
         <div class="facilities-container">
             <div class="facility">
-                <img src="268.jpg" alt="Kolam Renang">
+                <img src="images/pool.jpg" alt="Kolam Renang">
                 <h3>Kolam Renang</h3>
                 <p>Nikmati kesegaran berenang di kolam kami yang bersih dan nyaman.</p>
             </div>
